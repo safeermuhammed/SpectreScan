@@ -45,7 +45,11 @@ def detect_encoded_attacks(log_entries, encoded_patterns):
 sqli_patterns = [
     r"\bUNION\s+SELECT\b", r"\bOR\s+1=1\b", r"\bSELECT\s+\*\s+FROM\b",
     r"\bDROP\s+TABLE\b", r"\bINSERT\s+INTO\b", r"\bUPDATE\s+SET\b",
-    r"\bSLEEP\(\d+\)\b", r"\bGROUP\s+BY\b\s+--\b"
+    r"\bSLEEP\(\d+\)\b", r"\bGROUP\s+BY\b\s+--\b", r"\bCASE\s+WHEN\b",
+    r"\bORDER\s+BY\s+\d+\b", r"\bINTO\s+OUTFILE\b", r"\bLOAD_FILE\b",
+    r"\bAND\s+\d+=\d+\b", r"\bHAVING\s+1=1\b", r"' OR '1'='1",
+    r'" OR "1"="1', r"\bWAITFOR\s+DELAY\b", r"\bEXEC\s+XP_CMDSHELL\b",
+    r"%27OR%201%3D1\b", r"%3D%28SELECT\b"  # URL-encoded attack payloads
 ]
 
 # 🔍 Hardcoded RCE Command Patterns
